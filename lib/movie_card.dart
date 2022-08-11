@@ -8,25 +8,31 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
             image: DecorationImage(image: AssetImage("assets/in.jpg"), fit: BoxFit.fitWidth)),
         width: (MediaQuery.of(context).size.width / 2) - 10,
         height: 250,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+              decoration: BoxDecoration(
+                  color: colorScheme.surface,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))),
               width: double.infinity,
-              color: colorScheme.surface,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Text("Avengers: End Game",
+                      child: Text("Interstellar",
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
-                          style: TextStyle(fontSize: 18)),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 16)),
                     ),
                   ],
                 ),
