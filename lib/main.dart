@@ -22,6 +22,12 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         colorScheme: colorScheme,
         textTheme: TextTheme(bodyMedium: TextStyle(color: colorScheme.onSurface)),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            primary: colorScheme.onBackground
+          )
+        ),
+        scaffoldBackgroundColor: colorScheme.background,
         outlinedButtonTheme: OutlinedButtonThemeData(
             style: OutlinedButton.styleFrom(
           side: BorderSide(
@@ -29,6 +35,9 @@ class MyApp extends StatelessWidget {
             width: 2,
           ),
         )),
+        drawerTheme: DrawerThemeData(
+          backgroundColor: colorScheme.surface
+        )
       ),
     );
   }

@@ -4,7 +4,7 @@ const Color _primary = Color(0xfffe4141);
 const Color _onPrimary = Color(0xffe7e7e7);
 const Color _surface = Color(0xff1e1b26);
 const Color _onSurface = Color(0xffe7e7e7);
-const Color _background = Color(0xff181219);
+const Color _background = Color(0xff322d3f);
 const Color _error = Colors.red;
 
 ColorScheme colorScheme = const ColorScheme(
@@ -17,7 +17,7 @@ ColorScheme colorScheme = const ColorScheme(
   onError: _onPrimary,
   background: _background,
   onBackground: _onPrimary,
-  surface: _background,
+  surface: _surface,
   onSurface: _onSurface,
   primaryContainer: _surface,
 );
