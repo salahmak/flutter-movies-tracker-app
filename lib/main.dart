@@ -19,25 +19,25 @@ class MyApp extends StatelessWidget {
         "/movie": (ctx) => MoviePage(imageUrl: "in.jpg", title: "Interstellar", appBarHeight: 56)
       },
       theme: ThemeData(
-        brightness: Brightness.dark,
-        colorScheme: colorScheme,
-        textTheme: TextTheme(bodyMedium: TextStyle(color: colorScheme.onSurface)),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            primary: colorScheme.onBackground
-          )
-        ),
-        scaffoldBackgroundColor: colorScheme.background,
-        outlinedButtonTheme: OutlinedButtonThemeData(
-            style: OutlinedButton.styleFrom(
-          side: BorderSide(
-            color: colorScheme.primary,
-            width: 2,
+          brightness: Brightness.dark,
+          colorScheme: colorScheme,
+          textTheme: TextTheme(bodyMedium: TextStyle(color: colorScheme.onSurface)),
+          textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                  primary: colorScheme.onBackground
+              )
           ),
-        )),
-        drawerTheme: DrawerThemeData(
-          backgroundColor: colorScheme.surface
-        )
+          scaffoldBackgroundColor: colorScheme.background,
+          outlinedButtonTheme: OutlinedButtonThemeData(
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(
+                  color: colorScheme.primary,
+                  width: 2,
+                ),
+              )),
+          drawerTheme: DrawerThemeData(
+              backgroundColor: colorScheme.surface
+          )
       ),
     );
   }
