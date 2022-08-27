@@ -108,10 +108,12 @@ class MoviePage extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          movie.actors ?? "",
-                                          style:
-                                              TextStyle(color: darken(colorScheme.onSurface, 0.3)),
+                                        Expanded(
+                                          child: Text(
+                                            movie.actors ?? "",
+                                            style:
+                                                TextStyle(color: darken(colorScheme.onSurface, 0.3)),
+                                          ),
                                         )
                                       ],
                                     ),
