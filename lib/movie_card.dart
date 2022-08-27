@@ -1,37 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:movies_tracker/pages/movie_page.dart';
+import 'package:movies_tracker/providers/movies_provider.dart';
 import 'package:movies_tracker/services/global_theme.dart';
 import 'package:movies_tracker/services/movie.dart';
+import 'package:provider/provider.dart';
 
 class MovieCard extends StatelessWidget {
-
-  Movie? movie;
-
   MovieCard({Key? key, required this.movie}) : super(key: key);
+  final Movie movie;
+
+  late bool isSeen;
+  late bool isPending;
 
   @override
   Widget build(BuildContext context) {
-    print("movie card lol");
+    isSeen = context.watch<Movies>().getSeen().contains(movie);
+    isPending = context.watch<Movies>().getPending().contains(movie);
+
     return Stack(
       children: [
         Positioned.fill(
           bottom: 0,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: GridTile(
-              footer: GridTileBar(
-                title: Text(movie?.Title ?? '',
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16)),
-                backgroundColor: Color(0xd91e1b26),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: (() {
+                if (isPending) {
+                  return Colors.amber;
+                } else if (isSeen) {
+                  return colorScheme.secondary;
+                } else {
+                  return Colors.transparent;
+                }
+              })()),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: GridTile(
+                footer: GridTileBar(
+                  title: Text(movie.title,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16)),
+                  backgroundColor: Color(0xd91e1b26),
+                ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      movie.poster,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Center(child: Text("Image not found"));
+                      },
+                      fit: BoxFit.fitWidth,
+                    )),
               ),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.network(
-                    movie?.Poster ?? '',
-                    fit: BoxFit.fitWidth,
-                  )),
             ),
           ),
         ),
@@ -40,7 +63,11 @@ class MovieCard extends StatelessWidget {
             type: MaterialType.transparency,
             child: InkWell(
               borderRadius: BorderRadius.circular(15),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return MoviePage(movie: movie);
+                }));
+              },
             ),
           ),
         )
